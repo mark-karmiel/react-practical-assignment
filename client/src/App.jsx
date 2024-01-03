@@ -5,7 +5,7 @@ import Main from "./components/Main";
 
 
 function App() {
-    const userLogin = useSelector(state => state.user.login)
+    const userLogin = useSelector(state => state.user.name)
   // useEffect(() => {
   //   // TEST API, it might be removed
   //   fetch('http://localhost:8080/live').then(res => res.json()).then(res => {

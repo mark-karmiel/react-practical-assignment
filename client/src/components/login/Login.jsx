@@ -19,7 +19,7 @@ function Login(props) {
     }
 
     return (
-        <div className={'login'}>
+        <div className={'css.login'}>
             <label>User: </label>
             <input
                 value={userLogin}
