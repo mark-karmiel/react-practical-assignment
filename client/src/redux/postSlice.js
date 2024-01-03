@@ -26,6 +26,22 @@ export const createPost =
         return imgJson.result
     })
 
+export const updatePost = createAsyncThunk('posts/updatePost',
+    async ({title, likes, dislike, postId},{dispatch})=>{
+    const response = await fetch(MAIN_URL + `comment/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            title,
+            likes,
+            dislike
+        })
+    })
+        const data = await response.json()
+        return data.result
+    })
 
 
 const postSlice = createSlice({
