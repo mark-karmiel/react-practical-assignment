@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from "react-redux";
-import {createPost, updatePost} from "../redux/postSlice";
-import UPLOAD from "../assets/upload.png"
+import {createPost, updatePost} from "../../redux/postSlice";
+import UPLOAD from "../../assets/upload.png"
 
 
 

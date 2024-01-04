@@ -42,6 +42,53 @@ export const updatePost = createAsyncThunk('posts/updatePost',
         const data = await response.json()
         return data.result
     })
+export const deletePostById = createAsyncThunk('posts/deletePostById',
+    async (postId)=>{
+    const response = await fetch(MAIN_URL+`post/${postId}`,
+        {
+            method: 'DELETE'
+        })
+    })
+
+export const createCommentByPostId = createAsyncThunk('posts/createCommentByPostId', async ({postId, text, username}) => {
+    const response = await fetch(MAIN_URL + `comment/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            postId,
+            text,
+            username,
+        })
+    })
+    const data = await response.json()
+    return data.result
+})
+export const updateCommentById = createAsyncThunk('posts/updateCommentById', async ({commentId, text, likes, dislikes}) => {
+    const response = await fetch(MAIN_URL + `comment/${commentId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            text,
+            likes,
+            dislikes,
+        })
+    })
+    const updatedComment = await response.json()
+    return updatedComment.result
+})
+export const deleteCommentById = createAsyncThunk('posts/deleteCommentById', async (commentId) => {
+    const response = await fetch(MAIN_URL + `comment/${commentId}`, {
+        method: 'DELETE',
+    })
+    const deletedComment = await response.json()
+    return deletedComment.result
+})
+
+
 
 
 const postSlice = createSlice({
@@ -84,4 +131,4 @@ const postSlice = createSlice({
 })
 
 export default postSlice.reducer
-export const {setCurrentPostInfo, setEdit} = postSlice.actions
+export const {setCurrentPostInfo, setEdit, setPageNum} = postSlice.actions
