@@ -48,14 +48,13 @@ function NewPost({username, setPostCreate}) {
                 <input name="title" type="text"
                        value={title}
                        onChange={(e)=>setTitle(e.target.value)}/>
-                {!edit && (!file?
-                <label htmlFor={"picture"}>
-                    Upload the picture
-                    <img src = {UPLOAD} alt="Upload"/>
-                </label>:
-                <button>{file.name}X</button>)}
+
                 <input type="file" id="picture" name="picture"
                        onChange={(e) =>setFile(e.target.files[0])}/>
+                <img
+                    src={file ? URL.createObjectURL(file) : UPLOAD}
+                    alt="Preview"
+                />
                 <button onClick={()=>{
                     !edit? createNewPost():updateNewPost()
                 }}>

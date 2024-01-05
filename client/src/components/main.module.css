@@ -1,13 +1,79 @@
 .header {
     display: flex;
-    padding: 5rem;
-    border: 2px solid black
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.1rem;
+height: 5vh;
+}
+header h4, .header button {
+    margin: 0; /* Обнуляем внутренние отступы у h4 и button */
+}
+.header h4 {
+   padding-right: 10px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    color: #fff;
+}
+
+.header button{
+    background: transparent;
+    width: 70px;
+    /*padding: 0.5em;*/
+    /*margin-bottom: 2em;*/
+    border: solid white 1px;
+    border-radius: 5000px;
+    backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 60px rgba(0,0,0,0.2);
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
 .main{
 
 }
 
-.paginator{
+.main button{
+    background: transparent;
+    width: 100px;
+    /*padding: 0.5em;*/
+    /*margin-bottom: 2em;*/
+    border: solid white 1px;
+    border-radius: 5000px;
+    backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 60px rgba(0,0,0,0.2);
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
 
+.paginator{
+position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    color: #fff;
+}
+
+.paginator button{
+
+    background: transparent;
+    width: 30px;
+
+    border: none;
+    border-radius: 5000px;
+    backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 60px rgba(0,0,0,0.2);
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }

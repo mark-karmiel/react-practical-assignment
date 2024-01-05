@@ -19,10 +19,10 @@ function Login(props) {
     }
 
     return (
-        <div className={'css.login'}>
-            <label>User: </label>
+        <div className={css.login}>
             <input
                 value={userLogin}
+                placeholder="Enter your Login"
                 onChange={(e) => setUserLogin(e.target.value)}
                 onKeyUp={(e) => {if (e.key === 'Enter') submit()}}
             />

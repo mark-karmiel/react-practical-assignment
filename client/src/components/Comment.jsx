@@ -2,6 +2,10 @@ import React from 'react';
 import {useDispatch} from "react-redux";
 import {deleteCommentById, deletePostById, updateCommentById, updatePost} from "../redux/postSlice";
 import css from './Post/post.css'
+import dayjs from "dayjs"
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime)
 
 function Comment(props) {
     const dispatch = useDispatch()
@@ -56,7 +60,8 @@ function Comment(props) {
         <div>
             <h2>{props.text}</h2>
             <div className={css.footer}>
-                <span>{props.username}</span>
+                <span>{props.username} </span>
+                <p className={css.timestamp}>{dayjs(new Date(+props.date)).fromNow()}</p>
             </div>
                 <button className={css.like}>like</button>
                 <button className={css.dislike}>dislike</button>

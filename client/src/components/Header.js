@@ -12,7 +12,7 @@ function Header(props) {
     }
     return (
         <div className={css.header}>
-            <h3>{username}</h3>
+            <h4>{username}</h4>
 <button onClick={logout}>Log out</button>
         </div>
     );

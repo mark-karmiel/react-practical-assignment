@@ -2,7 +2,14 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {deleteCommentById, deletePostById, setCurrentPostInfo, setEdit, updatePost} from "../../redux/postSlice";
 import Comment from "../Comment";
+import dayjs from "dayjs"
+import relativeTime from 'dayjs/plugin/relativeTime'
 import css from './post.css'
+import NewComment from "../NewComment";
+
+dayjs.extend(relativeTime)
+
+
 
 function Post(props) {
     const dispatch = useDispatch()
@@ -71,10 +78,11 @@ function Post(props) {
                 <img src={props.imageSrc} alt={''}/>
             </div>
             <div className={css.footer}>
-                <span>{props.username}</span>
+                <span>{props.username} </span>
+                <span className={css.timestamp}>{dayjs(new Date(+props.date)).fromNow()}</span>
             </div>
-            <button className={css.like}>like</button>
-            <button className={css.dislike}>dislike</button>
+            <button className={css.like} onClick={handleLike}>like</button>
+            <button className={css.dislike} onClick={handleDisLike}>dislike</button>
             <span>{props.likes.length - props.dislikes.length}</span>
             {isMine && <button  onClick={deletePost}>
                 Delete
@@ -89,10 +97,12 @@ function Post(props) {
             </div>
             {comment && <button onClick={()=>setNewComment(!newComment)}>New comment</button>}
             {comment && props.comment && props.comment.map(comment =>{
-                <Comment></Comment>
-                //Add logic
-            })}
+                <Comment  key={comment.id}
+                          {...comment}
+                          currentUserName={props.currentUserName}/>
 
+            })}
+            {newComment && comment && <NewComment postId={props.id}/>}
         </div>
 
     );
