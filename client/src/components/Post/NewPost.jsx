@@ -52,7 +52,7 @@ function NewPost({username, setPostCreate}) {
                 <input type="file" id="picture" name="picture"
                        onChange={(e) =>setFile(e.target.files[0])}/>
                 <img
-                    src={file ? URL.createObjectURL(file) : UPLOAD}
+                    src={file? URL.createObjectURL(file) : UPLOAD}
                     alt="Preview"
                 />
                 <button onClick={()=>{

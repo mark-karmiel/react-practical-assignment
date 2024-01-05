@@ -35,7 +35,7 @@ function Post(props) {
     }
 
     const dislike = () =>{
-        const index = props.dislike.findIndex(author => author === props.currentUserName)
+        const index = props.dislikes.findIndex(author => author === props.currentUserName)
         const tempDisLikes = [...props.dislikes]
         tempDisLikes.splice(index, 1)
         dispatch(updatePost({postId: props.id, dislikes: tempDisLikes}))
@@ -82,8 +82,9 @@ function Post(props) {
                 <span className={css.timestamp}>{dayjs(new Date(+props.date)).fromNow()}</span>
             </div>
             <button className={css.like} onClick={handleLike}>like</button>
+            <span> {props.likes.length - props.dislikes.length} </span>
             <button className={css.dislike} onClick={handleDisLike}>dislike</button>
-            <span>{props.likes.length - props.dislikes.length}</span>
+
             {isMine && <button  onClick={deletePost}>
                 Delete
             </button>}
@@ -96,12 +97,12 @@ function Post(props) {
                 </button>
             </div>
             {comment && <button onClick={()=>setNewComment(!newComment)}>New comment</button>}
-            {comment && props.comment && props.comment.map(comment =>{
-                <Comment  key={comment.id}
-                          {...comment}
-                          currentUserName={props.currentUserName}/>
+            {comment && props.comment && props.comment.map(comment => (
+                <Comment key={comment.id}
+                         {...comment}
+                         currentUserName={props.currentUserName}/>
 
-            })}
+            ))}
             {newComment && comment && <NewComment postId={props.id}/>}
         </div>
 

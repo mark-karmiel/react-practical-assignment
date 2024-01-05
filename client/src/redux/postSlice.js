@@ -38,7 +38,7 @@ export const createPost =
     })
 
 export const updatePost = createAsyncThunk('posts/updatePost',
-    async ({title, likes, dislike, postId},{dispatch})=>{
+    async ({title, likes, dislikes, postId},{dispatch})=>{
     const response = await fetch(MAIN_URL + `post/${postId}`, {
         method: 'PUT',
         headers: {
@@ -47,7 +47,7 @@ export const updatePost = createAsyncThunk('posts/updatePost',
         body: JSON.stringify({
             title,
             likes,
-            dislike
+            dislikes
         })
     })
         const data = await response.json()
@@ -68,8 +68,8 @@ export const createCommentByPostId = createAsyncThunk('posts/createCommentByPost
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            postId,
             text,
+            postId,
             username,
         })
     })
