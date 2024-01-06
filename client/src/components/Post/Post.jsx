@@ -97,7 +97,7 @@ function Post(props) {
                 </button>
             </div>
             {comment && <button onClick={()=>setNewComment(!newComment)}>New comment</button>}
-            {comment && props.comment && props.comment.map(comment => (
+            {comment && props.comments && props.comments.map(comment => (
                 <Comment key={comment.id}
                          {...comment}
                          currentUserName={props.currentUserName}/>

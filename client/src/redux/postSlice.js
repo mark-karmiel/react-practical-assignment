@@ -5,7 +5,7 @@ import {MAIN_URL} from "../utils/constant";
 export const getPostsByPageNumber = createAsyncThunk('posts/getPosts', async (pageNum) => {
     const response = await fetch(MAIN_URL + `post/page/${pageNum}`);
     const data = await response.json();
-    return data.result;
+    return data;
 })
 export const filterPostsByKeyword = createAsyncThunk('posts/filterPostsByKeyword', async (keyword) => {
     const response = await fetch(MAIN_URL + `post/search/${keyword}`)
@@ -59,6 +59,8 @@ export const deletePostById = createAsyncThunk('posts/deletePostById',
         {
             method: 'DELETE'
         })
+        const data = await response.json()
+        return data.result
     })
 
 export const createCommentByPostId = createAsyncThunk('posts/createCommentByPostId', async ({postId, text, username}) => {
@@ -172,7 +174,7 @@ const postSlice = createSlice({
         })
 
         builder.addCase(deletePostById.fulfilled, (state, action) => {
-            const index = state.posts.findIndex(post => post.id === action.payload.id)
+            const index = state.posts.findIndex(post => post.id === action.payload.postId)
             const postArr = [...state.posts]
             postArr.splice(index, 1)
             state.posts = postArr

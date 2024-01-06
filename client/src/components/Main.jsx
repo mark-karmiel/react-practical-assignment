@@ -45,7 +45,7 @@ function Main(props) {
                     Create Post
                 </button>
                 {newPostCreate && <NewPost username = {username}
-                                           setPostCreate = {setNewPostCreate}/>}
+                                           setNewPostCreate = {setNewPostCreate}/>}
                 <div>
                     <label htmlFor="search">Search: </label>
                     <input type="text"
@@ -62,7 +62,7 @@ function Main(props) {
                     />
                 </div>
 
-                {loading === 'pending'
+                {loading === 'loading'
                     ? <div>Loading...</div>
                     : <PostsLayout>
                         {posts && [...posts]

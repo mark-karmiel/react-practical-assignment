@@ -5,7 +5,7 @@ import UPLOAD from "../../assets/upload.png"
 
 
 
-function NewPost({username, setPostCreate}) {
+function NewPost({username, setNewPostCreate}) {
     const currentPostInfo = useSelector(state => state.posts.currentPostInfo)
     const[title, setTitle] = useState(currentPostInfo.title)
     const[file, setFile] = useState(null)
@@ -21,7 +21,7 @@ function NewPost({username, setPostCreate}) {
         }
         dispatch(createPost({title, username, file}))
         setTitle('')
-        setPostCreate(false)
+        setNewPostCreate(false)
 
     }
     const updateNewPost = ()=>{
@@ -31,12 +31,12 @@ function NewPost({username, setPostCreate}) {
         }
         dispatch(updatePost({title, username, file}))
         setTitle('')
-        setPostCreate(false)
+        setNewPostCreate(false)
 
     }
 
     const handleClose = ()=>{
-        setPostCreate(false)
+        setNewPostCreate(false)
         setTitle('')
     }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './main.module.css'
 import {useDispatch, useSelector} from "react-redux";
-import {setCurrentPostInfo,setPageNum } from "../redux/postSlice";
+import {setCurrentPostInfo,setPageNum} from "../redux/postSlice";
 
 
 function Paginator({setNewPostCreate}) {
@@ -11,13 +11,13 @@ function Paginator({setNewPostCreate}) {
     const decrement = () => {
         if (pageNum <= 1) return
         dispatch(setPageNum(pageNum - 1))
-        setNewPostCreate && setNewPostCreate(false)
+       setNewPostCreate(false)
         dispatch(setCurrentPostInfo({title: '', imageScr: null}))
     }
     const increment = () => {
         if (pageNum >= totalPages) return
         dispatch(setPageNum(pageNum + 1))
-        setNewPostCreate &&   setNewPostCreate(false)
+       setNewPostCreate(false)
         dispatch(setCurrentPostInfo({title: '', imageScr: null}))
     }
     return (
