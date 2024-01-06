@@ -3,7 +3,7 @@ import {createCommentByPostId, setCurrentPostInfo} from "../redux/postSlice";
 import css from './Post/post.css'
 import {useDispatch, useSelector} from "react-redux";
 
-function NewComment(props) {
+function NewComment(postId) {
     const dispatch = useDispatch()
     const username = useSelector(state => state.user.name)
     const [text, setText] = useState('')
@@ -14,7 +14,7 @@ function NewComment(props) {
             alert('You need to write the comment')
             return
         }
-        dispatch(createCommentByPostId({postId: currentPostInfo.id, text, username}))
+        dispatch(createCommentByPostId({ text, postId: postId.postId , username}))
         setText('')
     }
 
