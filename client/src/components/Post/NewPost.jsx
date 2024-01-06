@@ -29,7 +29,7 @@ function NewPost({username, setNewPostCreate}) {
             alert('Title can`t be empty')
             return
         }
-        dispatch(updatePost({title, username, file}))
+        dispatch(updatePost({title, postId: currentPostInfo.id, file}))
         setTitle('')
         setNewPostCreate(false)
 

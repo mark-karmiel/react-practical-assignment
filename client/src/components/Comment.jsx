@@ -19,7 +19,7 @@ function Comment(props) {
     }
 
     const dislike = () =>{
-        const index = props.dislike.findIndex(author => author === props.currentUserName)
+        const index = props.dislikes.findIndex(author => author === props.currentUserName)
         const tempDisLikes = [...props.dislikes]
         tempDisLikes.splice(index, 1)
         dispatch(updateCommentById({commentId: props.id, dislikes: tempDisLikes}))
@@ -58,14 +58,15 @@ function Comment(props) {
 
     return (
         <div>
-            <h2>{props.text}</h2>
+            <h4>{props.text}</h4>
             <div className={css.footer}>
-                <span>{props.username} </span>
-                <p className={css.timestamp}>{dayjs(new Date(+props.date)).fromNow()}</p>
+                <span>{props.username} commented </span>
+                <span className={css.timestamp}>{dayjs(new Date(+props.date)).fromNow()}</span>
             </div>
-                <button className={css.like}>like</button>
-                <button className={css.dislike}>dislike</button>
-                <span>{props.likes.length - props.dislikes.length}</span>
+                <button className={css.like} onClick={handleLike}>like</button>
+            <span>{props.likes.length - props.dislikes.length}</span>
+                <button className={css.dislike} onClick={handleDisLike}>dislike</button>
+
                 {isMine && <button onClick={deleteComment}>
                     Delete
                 </button>}

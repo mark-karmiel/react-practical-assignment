@@ -73,12 +73,12 @@ function Post(props) {
 
     return (
         <div>
-            <h2>{props.title}</h2>
+            <h3>{props.title}</h3>
             <div>
                 <img src={props.imageSrc} alt={''}/>
             </div>
             <div className={css.footer}>
-                <span>{props.username} </span>
+                <span>{props.username}  posted it </span>
                 <span className={css.timestamp}>{dayjs(new Date(+props.date)).fromNow()}</span>
             </div>
             <button className={css.like} onClick={handleLike}>like</button>
@@ -91,18 +91,19 @@ function Post(props) {
             {isMine && <button  onClick={handleEdit}>
                 Edit
             </button>}
-            <div>
+            <div className={css.newComment}>
                 <button onClick={()=> setComment(!comment)}>
                     Comments
                 </button>
-            </div>
-            {comment && <button onClick={()=>setNewComment(!newComment)}>New comment</button>}
-            {comment && props.comments && props.comments.map(comment => (
-                <Comment key={comment.id}
-                         {...comment}
-                         currentUserName={props.currentUserName}/>
+                {comment && <button className={css.newCommentButton} onClick={()=>setNewComment(!newComment)}>New comment</button>}
+                {comment && props.comments && props.comments.map(comment => (
+                    <Comment key={comment.id}
+                             {...comment}
+                             currentUserName={props.currentUserName}/>
 
-            ))}
+                ))}
+            </div>
+
             {newComment && comment && <NewComment postId={props.id}/>}
         </div>
 
